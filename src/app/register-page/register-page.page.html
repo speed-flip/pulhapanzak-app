@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Página de registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="registerForm" class="contenedor">
+    <ion-item [ngClass]="{ 'error': firstNameError }" class="mt-5">
+      <ion-label position="floating">Nombres</ion-label>
+      <ion-input aria-label="Nombre" formControlName="nombres" type="text" />
+    </ion-item>
+    <ion-text color="danger" *ngIf="firstNameError">{{ firstNameError }}</ion-text>
+
+    <ion-item [ngClass]="{ 'error': lastNameError }" class="mt-5">
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input aria-label="Apellidos" formControlName="apellidos" type="text" />
+    </ion-item>
+    <ion-text color="danger" *ngIf="lastNameError">{{ lastNameError }}</ion-text>
+
+    <ion-item [ngClass]="{ 'error': emailError }" class="mt-5">
+      <ion-label position="floating">Correo electronico</ion-label>
+      <ion-input aria-label="email" formControlName="email" type="text" />
+    </ion-item>
+    <ion-text color="danger" *ngIf="emailError">{{ emailError }}</ion-text>
+
+    <ion-item [ngClass]="{ 'error': passwordError }" class="mt-5">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input aria-label="password" formControlName="password" type="password" />
+    </ion-item>
+    <ion-text color="danger" *ngIf="passwordError">{{ passwordError }}</ion-text>
+
+    <ion-item [ngClass]="{ 'error': DNIError }" class="mt-5">
+      <ion-label position="floating">Numero de identidad</ion-label>
+      <ion-input aria-label="dni" formControlName="dni" type="number" />
+    </ion-item>
+    <ion-text color="danger" *ngIf="DNIError">{{ DNIError }}</ion-text>
+
+    <ion-item [ngClass]="{ 'error': phoneNumberError }" class="mt-5">
+      <ion-label position="floating"># Celular</ion-label>
+      <ion-input aria-label="celular" formControlName="celular" type="number" />
+    </ion-item>
+    <ion-text color="danger" *ngIf="phoneNumberError">{{ phoneNumberError }}</ion-text>
+
+    <ion-button expand="block" type="submit">Submit</ion-button>
+  </form>
+
+
+</ion-content>
