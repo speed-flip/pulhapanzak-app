@@ -20,7 +20,7 @@
     <ion-input type="password" formControlName="password" labelPlacement="floating" errorText="Contraseña obligatorio"
       label="Contraseña" placeholder="Ingresa tu contraseña" />
 
-    <a href="forgot-password" class="forgot">¿Olvidaste tu contraseña?</a>
+    <a routerLink="/forgot-password" class="forgot">¿Olvidaste tu contraseña?</a>
 
     <ion-button type="submit" expand="block">
       Iniciar Sesión
@@ -28,7 +28,7 @@
   </form>
 
   <div class="center">
-    <ion-text>¿No tienes una cuenta? <a href="signup">Registrate ahora</a></ion-text>
+    <ion-text>¿No tienes una cuenta? <a routerLink="/signup">Registrate ahora</a></ion-text>
   </div>
 
   <ion-toast [isOpen]="alerta.show" [message]="alerta.msg" [duration]="alerta.duration" />

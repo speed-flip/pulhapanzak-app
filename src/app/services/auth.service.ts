@@ -1,4 +1,6 @@
 import { Injectable, inject } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 
 import { Auth } from '@angular/fire/auth'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
@@ -9,7 +11,8 @@ import { Login } from '../pages/auth/interface';
 })
 export class AuthService {
   private auth = inject(Auth);
-
+  private firestore = inject(Firestore);
+  private collection = collection(this.firestore, 'users');
   private isUserLogged() {
     return this.getCurrentUser();
   }
@@ -36,6 +39,14 @@ export class AuthService {
 
   forgotPassword(email: string) {
     return sendPasswordResetEmail(this.auth, email);
+  }
+
+  createUserDoc({ nombre, email }: { nombre: string, email: string }) {
+    const user = doc(this.collection);
+    return setDoc(user, {
+      nombre,
+      email,
+    });
   }
 
 }

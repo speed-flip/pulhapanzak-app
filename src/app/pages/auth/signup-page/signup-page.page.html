@@ -9,13 +9,19 @@
   <img src="assets/img/logoapp.png" />
 
   <form [formGroup]="loginForm" (submit)="onSubmit()" class="contenedor">
-    <ion-input type="email" formControlName="email" labelPlacement="floating" errorText="Formato de correo no valido"
+    <ion-input type="text" formControlName="nombre" labelPlacement="floating" [errorText]="errorNombre" label="Nombre"
+      placeholder="Ingresa tu nombre" />
+
+    <ion-input type="email" formControlName="email" labelPlacement="floating" [errorText]="emailError"
       label="Correo electronico" placeholder="Ingresa tu correo electronico" />
 
-    <ion-input type="password" formControlName="password" labelPlacement="floating" errorText="Contraseña obligatorio"
+    <ion-input type="password" formControlName="password" labelPlacement="floating" [errorText]="passwordError"
       label="Contraseña" placeholder="Ingresa tu contraseña" />
 
-    <a href="forgot-password" class="forgot">¿Olvidaste tu contraseña?</a>
+    <ion-input type="password" formControlName="password" labelPlacement="floating" label="Contraseña"
+      placeholder="Ingresa tu contraseña" />
+
+    <a routerLink="/forgot-password" class="forgot">¿Olvidaste tu contraseña?</a>
 
 
     <ion-button type="submit" expand="block">
@@ -24,7 +30,7 @@
   </form>
 
   <div class="center">
-    <ion-text>¿Ya tienes una cuenta? <a href="login">Inicia Sesión</a></ion-text>
+    <ion-text>¿Ya tienes una cuenta? <a routerLink="/login">Inicia Sesión</a></ion-text>
   </div>
 
   <ion-toast [isOpen]="alerta.show" [message]="alerta.msg" [duration]="alerta.duration" />
