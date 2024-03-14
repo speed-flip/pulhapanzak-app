@@ -61,15 +61,15 @@ export class SignupPagePage {
     }
 
     // console.log(login);
-    this.authService.createUserDoc({ nombre: this.loginForm.value.nombre!, email: login.email! })
-      .then(resul => console.log(resul))
-      .catch(err => console.log(err));
-
-    this.authService.signUp(login).then(() => {
+    
+    this.authService.signUp(login).then((user) => {
       this.alerta.show = true;
       this.alerta.msg = 'Cuenta creada correctamente';
       this.alerta.duration = 3000;
       this.router.navigateByUrl('/login');
+      this.authService.createUserDoc({ nombre: this.loginForm.value.nombre!, email: login.email!, uid: user.user.uid })
+        .then(resul => console.log(resul))
+        .catch(err => console.log(err));
     }).catch(error => {
       console.log(error);
       this.alerta.show = true;

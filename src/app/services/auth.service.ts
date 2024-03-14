@@ -41,11 +41,12 @@ export class AuthService {
     return sendPasswordResetEmail(this.auth, email);
   }
 
-  createUserDoc({ nombre, email }: { nombre: string, email: string }) {
-    const user = doc(this.collection);
-    return setDoc(user, {
-      nombre,
-      email,
+  createUserDoc({ nombre, email, uid }: { nombre: string, email: string, uid: string }) {
+    const userRef = doc(this.collection, uid);
+    return setDoc(userRef, {
+      uid: uid,
+      email: email,
+      name: nombre,
     });
   }
 
