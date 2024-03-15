@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, getDoc } from 'firebase/firestore';
 
 import { Auth } from '@angular/fire/auth'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
@@ -48,6 +48,27 @@ export class AuthService {
       email: email,
       name: nombre,
     });
+  }
+
+  updateUser({ nombre, dni, uid, fecha, celular, photoUrl}: { nombre: string, dni: string, uid: string, fecha: string | Date, celular: string, photoUrl: string }) {
+    const userRef = doc(this.collection, uid);
+    return setDoc(userRef, {
+      uid,
+      name: nombre,
+      fechaNacimiento: fecha,
+      dni,
+      celular,
+      photoUrl,
+    });
+  }
+
+  getUser(uid: string) {
+    const userRef = doc(this.collection, uid);
+    return getDoc(userRef);
+  }
+
+  cerrarSesion() {
+    this.auth.signOut();
   }
 
 }

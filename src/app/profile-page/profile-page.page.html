@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mi Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <ion-item>
+    <ion-img [src]="imageSrc ? imageSrc : 'assets/img/logoapp.png'" (click)="onPickImage()" />
+  </ion-item>
+
+  <form class="contenedor" [formGroup]="profileForm" (submit)="saveUser()">
+    <ion-input
+      type="text"
+      aria-label="Nombre"
+      labelPlacement="floating"
+      label="Nombre completo"
+      formControlName="nombre"
+      fill="outline"
+      class="mb-3"
+    />
+
+    <ion-input
+      type="number"
+      aria-label="DNI"
+      labelPlacement="floating"
+      label="DNI"
+      formControlName="dni"
+      fill="outline"
+      class="mb-3"
+    />
+    
+    <ion-input
+      type="date"
+      aria-label="fechanac"
+      labelPlacement="floating"
+      label="Fecha de nacimiento"
+      formControlName="fechanac"
+      [max]="fechaMax"
+      fill="outline"
+      class="mb-3"
+    />
+    
+    <ion-input
+      type="number"
+      aria-label="fechanac"
+      labelPlacement="floating"
+      label="celular"
+      formControlName="celular"
+      fill="outline"
+      class="mb-3"
+    />
+
+    <ion-button type="submit" expand="block">Guardar cambios</ion-button>
+    <ion-button type="button" fill="clear" class="mt-5" expand="block" (click)="cerrarSesion()">Cerrar sesion</ion-button>
+  </form>
+
+</ion-content>

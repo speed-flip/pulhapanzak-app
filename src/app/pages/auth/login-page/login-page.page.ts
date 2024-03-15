@@ -4,7 +4,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Login } from '../interface';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 })
 export class LoginPagePage {
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   alerta = {
     msg: '',
@@ -42,9 +42,11 @@ export class LoginPagePage {
 
     // console.log(login);
 
-    this.authService.login(login).then(() => {
+    this.authService.login(login).then((user) => {
       this.alerta.show = true;
       this.alerta.msg = 'Inicio de sesión correcto';
+      this.router.navigateByUrl('/profile-page');
+      localStorage.setItem('uid', user.user.uid);
     }).catch(error => {
       console.log(error);
       this.alerta.show = true;

@@ -26,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'forgot-password',
     loadComponent: () => import('./pages/auth/forgot-password/forgot-password.page').then( m => m.ForgotPasswordPage)
+  },  {
+    path: 'profile-page',
+    loadComponent: () => import('./profile-page/profile-page.page').then( m => m.ProfilePagePage)
   },
+
 ];

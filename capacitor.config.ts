@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.pulhapanzap.appvt',
   appName: 'pulhapanzak-app',
   webDir: 'www',
   server: {
